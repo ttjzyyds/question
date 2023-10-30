@@ -1,0 +1,55 @@
+body {
+    background-color: #EEEEEE !important;
+  }
+  
+  .header {
+    background-color: #888888;
+    height: 60px;
+    /* padding-left: 200px; */
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+  }
+.header .half{
+    width: 50%;
+    text-align: center;
+
+}
+  
+  .btn-finish {
+    margin-right: 50px;
+  }
+  .img {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+  }
+  .label{
+    color: #888;
+    font-size: 14px;
+    font-weight: normal;
+    width: 120px;
+    text-align: right;
+  }
+  .chose dt{
+    width: 20px;
+    text-align: center;
+    padding-right: 8px;
+    float: left;
+  }
+  .addQs{
+    text-align: right;
+    padding: 0 15px;
+  }
+  .right{
+    float: right;
+ 
+  }
+  .chose dd{
+    position: relative;
+  }
+  .chose  .right{
+    position: absolute;
+    top: 0;
+    right: 10%;
+  }

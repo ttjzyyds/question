@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sisp.dao.AnswerEntityMapper">
+
+
+    <select id="selectList" resultType="com.sisp.dao.entity.Answer">
+        select * from answer
+    </select>
+    <select id="selectQuestionIdById" resultType="java.lang.String">
+        select question_id from answer where id = #{id}
+    </select>
+    <select id="selectAnswerByQuestionId" resultType="com.sisp.dao.entity.Answer">
+        select * from answer where question_id = #{id} limit 1
+    </select>
+
+    <select id="getQuestionById" resultType="java.util.Map">
+        select * from question_info where questionnaire_id = #{id} ORDER BY `order` ASC
+    </select>
+
+    <select id="getOptionById" resultType="java.util.Map">
+        select * from option_info where question_id = #{questionId} ORDER BY `sequence` ASC
+    </select>
+
+    <insert id="insertQuestion" >
+        insert into  question_info(id,`type`,`content`,`order`,questionnaire_id) values (#{id},#{type},#{content},#{order},#{questionnaire_id})
+    </insert>
+
+    <update id="updateQuestion" >
+        update question_info set `type` = #{type},content = #{content},`order` = #{order},questionnaire_id = #{questionnaire_id} where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from option_info where id = #{id}
+    </delete>
+</mapper>

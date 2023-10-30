@@ -1,0 +1,63 @@
+body {
+    background-color: #EEEEEE !important;
+  }
+  
+  .header {
+    background-color: #888888;
+    height: 60px;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    cursor: not-allowed;
+  }
+.header .half{
+    width: 50%;
+    text-align: center;
+  cursor: not-allowed;
+}
+  
+  .btn-finish {
+    margin-right: 50px;
+    cursor: pointer;
+  }
+  .img {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    cursor: not-allowed;
+  }
+  .label{
+    color: #888;
+    font-size: 14px;
+    font-weight: normal;
+    width: 120px;
+    text-align: right;
+    cursor: not-allowed;
+  }
+  .chose dt{
+    width: 20px;
+    text-align: center;
+    padding-right: 8px;
+    float: left;
+    cursor: not-allowed;
+  }
+  .addQs{
+    text-align: right;
+    padding: 0 15px;
+    cursor: not-allowed;
+  }
+  .right{
+    float: right;
+    cursor: not-allowed;
+  }
+  .chose dd{
+    position: relative;
+    cursor: not-allowed;
+  }
+  .chose  .right{
+    position: absolute;
+    top: 0;
+    right: 10%;
+    cursor: not-allowed;
+  }
+

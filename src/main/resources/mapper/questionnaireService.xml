@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sisp.dao.QuestionnaireEntityMapper">
+    <insert id="insert" parameterType="com.sisp.dao.entity.QuestionnaireEntity">
+        INSERT INTO questionnaire_info (id, projectname,questionnairename,
+                                        description,target,start_time,end_time, issue_time,del)
+        VALUES (#{id,jdbcType=VARCHAR}, #{projectname,jdbcType=VARCHAR}, #{questionnaireName,jdbcType=VARCHAR},
+                #{description,jdbcType=VARCHAR}, #{target,jdbcType=VARCHAR},
+                #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{issue_time},"0")
+    </insert>
+
+    <delete id="delQuestionById">
+        delete from questionnaire_info where id = #{id}
+    </delete>
+
+    <select id="selectQuestionByProId" resultType="com.sisp.dao.entity.QuestionnaireEntity">
+        select * from questionnaire_info where projectname = #{id} and (del IS NULL OR del != "1")
+    </select>
+    <select id="selectQuestionById" resultType="com.sisp.dao.entity.QuestionnaireEntity">
+        select * from questionnaire_info where id = #{id , javaType=String}
+    </select>
+
+    <select id="editQuestionById" resultType="com.sisp.dao.entity.QuestionnaireEntity">
+        select * from questionnaire_info where id = #{id} and (del IS NULL OR del != "1")
+    </select>
+
+    <update id="markQuestionnaireAsDeleted">
+        UPDATE questionnaire_info SET del = "1" WHERE id = #{id}
+    </update>
+
+    <update id="updateLink">
+        update questionnaire_info set link=#{link} where questionnaireName=#{questionnaire.questionnaireName}
+    </update>
+    <select id="getLink" resultType="java.lang.String">
+        select link from questionnaire_info where questionnaireName=#{questionnaireName}
+    </select>
+    <update id="updateStatusAndLink">
+        UPDATE questionnaire_entity
+        SET status = #{status},
+            link = #{link}
+        WHERE id = #{questionnaireId}
+    </update>
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sisp.dao.AnswerOptionEntityMapper">
+
+
+    <select id="selectListById" resultType="com.sisp.dao.entity.AnswerOption">
+        select * from answer_option where answer_id = #{id}
+    </select>
+    <select id="analysis" resultType="com.sisp.dao.entity.AnalysisVO">
+        select content as 'type', count(*) as 'count'
+        from answer_option
+        where question_id = #{id} and no = #{i}
+        group by content
+    </select>
+    <select id="analysisByType" resultType="com.sisp.dao.entity.AnalysisVO">
+        select content as 'type', count(*) as 'count'
+        from answer_option
+        where question_id = #{question_id} and type = #{type}
+        group by content
+    </select>
+</mapper>

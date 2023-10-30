@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sisp.dao.QuestionOptionEntityMapper">
+
+
+    <insert id="addQuestionOption">
+        insert into option_info values(#{id}, #{question_id}, #{sequence}, #{option_content})
+    </insert>
+    <update id="updateQuestionOption">
+        update option_info
+        set sequence = #{sequence}, option_content = #{option_content}
+        where id = #{id}
+    </update>
+    <select id="selectCountByQuestionId" resultType="java.lang.Integer">
+        select count(*) from option_info where question_id = #{question_id}
+    </select>
+    <select id="selectQuestionOptionById" resultType="com.sisp.dao.entity.QuestionOption">
+        select * from option_info where question_id = #{id}
+    </select>
+    <select id="selectQuestionOptionList" resultType="com.sisp.controller.OptionVO">
+        select o.*, q.questionnairename from option_info o, questionnaire_info q where o.question_id = q.id
+    </select>
+
+    <delete id="delete">
+        delete from question_info where id = #{id}
+    </delete>
+</mapper>
